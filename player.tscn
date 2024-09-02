@@ -1,6 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://xibu5c60f2e5"]
+[gd_scene load_steps=10 format=3 uid="uid://xibu5c60f2e5"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_5ljwy"]
+[ext_resource type="AudioStream" uid="uid://k7wxixd6h02f" path="res://Audio/SFX - Death Explosion.ogg" id="2_es6nx"]
+[ext_resource type="AudioStream" uid="uid://bjnqnmghp2h8p" path="res://Audio/SFX - Success.ogg" id="3_4bq5w"]
+[ext_resource type="AudioStream" uid="uid://bvlc8rkbqrbtm" path="res://Audio/SFX - Main engine thrust.ogg" id="4_jgiv5"]
+[ext_resource type="PackedScene" uid="uid://ux6ivcx1ovdp" path="res://Particles/booster_particles.tscn" id="5_t746g"]
+[ext_resource type="PackedScene" uid="uid://dcecb8hw7dbrv" path="res://Particles/explosion_particles.tscn" id="6_7dk6m"]
+[ext_resource type="PackedScene" uid="uid://jfwajmrh6ca7" path="res://Particles/success_particles.tscn" id="7_e6tth"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xsnw3"]
 
@@ -21,5 +27,27 @@ mesh = SubResource("CylinderMesh_xsnw3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_34wc5")
+
+[node name="ExplosionAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_es6nx")
+
+[node name="SuccessAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4bq5w")
+
+[node name="RocketAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_jgiv5")
+
+[node name="BoosterParticles" parent="." instance=ExtResource("5_t746g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="LeftBoosterParticles" parent="." instance=ExtResource("5_t746g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -1, 0)
+
+[node name="RightBoosterParticles" parent="." instance=ExtResource("5_t746g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -1, 0)
+
+[node name="ExplosionParticles" parent="." instance=ExtResource("6_7dk6m")]
+
+[node name="SuccessParticles" parent="." instance=ExtResource("7_e6tth")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

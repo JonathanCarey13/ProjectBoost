@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://d3pjm0k5urwhw"]
 
-[ext_resource type="Script" path="res://level/LandingPad.gd" id="1_qqsvn"]
+[ext_resource type="Script" path="res://Level/LandingPad.gd" id="1_qqsvn"]
 [ext_resource type="PackedScene" uid="uid://xibu5c60f2e5" path="res://player.tscn" id="2_ktfon"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w38op"]
